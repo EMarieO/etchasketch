@@ -9,7 +9,7 @@ for (let i = 0; i < gridSize * gridSize; i++) {
    container.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`
    container.appendChild(content);
    content.addEventListener('mouseover', () => {
-   content.style.backgroundColor = 'green';
+   content.style.backgroundColor = randomRgb();
   });
  }
 }
@@ -23,9 +23,9 @@ function removeOldGrid() {
 }
 
 function reset() {
-  let resetB = Number(window.prompt("New number of squares per side:", ""));
-  if (resetB > 100)
-    window.prompt("Needs to be a number under 100!");
+  let resetB = Number(window.prompt("New number of squares per side:", "between 1 and 50"));
+  if (resetB > 50)
+    window.prompt("Number too high!");
     else
      removeOldGrid ();
      createGrid(resetB);
@@ -33,3 +33,9 @@ function reset() {
     
 }
 
+function randomRgb() {
+   const red = Math.floor(Math.random() * 256/2);
+   const green = Math.floor(Math.random() * 256/2);
+   const blue = Math.floor(Math.random() * 256/2);
+   return "rgb(" + red + ", " + green + ", " + blue + ")";
+ }
