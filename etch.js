@@ -23,9 +23,12 @@ function removeOldGrid() {
 }
 
 function reset() {
-  let resetB = Number(window.prompt("New number of squares per side:", "between 1 and 50"));
-  if (resetB > 50)
+  let resetB = Number(window.prompt("New number of squares per side:", "between 1 and 100"));
+  if (resetB > 100)
     window.prompt("Number too high!");
+    else if (isNaN(resetB) || !Number.isInteger(+resetB) || resetB < 1) {
+      return reset();
+    }
     else
      removeOldGrid ();
      createGrid(resetB);
